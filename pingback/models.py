@@ -15,6 +15,8 @@ class Pingback(models.Model):
     
     last_seen = models.DateTimeField(auto_now=True)
 
+    first_seen = models.DateTimeField(auto_now_add=True)
+
     count = models.PositiveIntegerField(default=0)
 
 
@@ -22,5 +24,6 @@ class PingbackIP(models.Model):
     
     pingback = models.ForeignKey(Pingback)
     ip = models.GenericIPAddressField()
+    first_seen = models.DateTimeField(auto_now_add=True)
     last_seen = models.DateTimeField(auto_now=True)
     count = models.PositiveIntegerField(default=0)
