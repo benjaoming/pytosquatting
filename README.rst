@@ -15,11 +15,10 @@ To run it:
 #. ``python manage.py runserver``
 
 
-``pythosquatting/settings/local.py``
+``pythosquatting/settings/local.py`` ::
 
-.. ::
   python
-  from .base import *  # @UnusedWildImport
+  from .base import *
 
   # SECURITY WARNING: keep the secret key used in production secret!
   SECRET_KEY = 'SOMETHING SECRET FOR A DEV ENV'
