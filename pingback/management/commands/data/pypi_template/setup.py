@@ -10,7 +10,10 @@ package_name = '{{ PACKAGE_NAME }}'
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
-if 'install' in sys.argv or 'bdist_wheel' in sys.argv:
+if 'bdist_wheel' in sys.argv:
+    raise Exception("Not going to build a .whl, this is sdist only!")
+
+if 'install' in sys.argv:
     try:
         # Python 3
         import urllib.request as urllib_request
