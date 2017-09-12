@@ -1,4 +1,9 @@
 # Byte-compiled / optimized / DLL files
+
+pytosquatting/settings/local.py
+
+pytosquatting/db.sqlite3
+
 __pycache__/
 *.py[cod]
 *$py.class
