@@ -20,7 +20,7 @@ class Pingback(models.Model):
     count = models.PositiveIntegerField(default=0)
     
     def __str__(self):
-        return "{}/{}".format(self.package_name, self.repository)
+        return "{}/{}".format(self.repository, self.package_name)
 
 
 class PingbackIP(models.Model):
