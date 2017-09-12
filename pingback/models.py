@@ -18,6 +18,9 @@ class Pingback(models.Model):
     first_seen = models.DateTimeField(auto_now_add=True)
 
     count = models.PositiveIntegerField(default=0)
+    
+    def __str__(self):
+        return "{}/{}".format(self.package_name, self.repository)
 
 
 class PingbackIP(models.Model):

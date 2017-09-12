@@ -6,10 +6,10 @@ from . import models
 
 @admin.register(models.Pingback)
 class PingbackAdmin(admin.ModelAdmin):
-    list_display = ('package_name', 'count', 'last_seen')
-    list_filter = ('repository',)
+    list_display = ('package_name', 'count', 'last_seen', 'first_seen')
+    list_filter = ('repository', 'last_seen')
 
 
 @admin.register(models.PingbackIP)
 class PingbackIPAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('ip', 'count', 'last_seen', 'pingback')

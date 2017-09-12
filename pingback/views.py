@@ -31,7 +31,7 @@ def pingback(request, repository=None, package=None):
     
     pingback_ip, __ = models.PingbackIP.objects.get_or_create(ip=ip, pingback=pingback)
     pingback_ip.count += 1
-    pingback.save()
+    pingback_ip.save()
 
     return HttpResponse(
         "Pingback from package {} in repository {}".format(package, repository)
