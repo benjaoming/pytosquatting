@@ -4,30 +4,54 @@
     <div class="row">
       <div class="one-half column" style="margin-top: 10%">
         <h1>Pytosquatting</h1>
-        <p>Security-hardened Python Package Index (PyPI).</p>
-        <h2>Getting started</h2>
-        <p>
-<pre>
-pip install pipsec
-pip install virtualenv-wrapper  # See that it fails
-pip install virtualenvwrapper  # This is correct
-</pre>
-        </p>
+        <p>Fixing typosquatting threats in Python Package Index (PyPI).</p>
         <h2>Why?</h2>
         <p>In June 2016, <a href="http://incolumitas.com/2016/06/08/typosquatting-package-managers/">Typosquatting programming language package managers</a> stated that <code>urllib2</code> had ~4,000 downloads in 2 weeks. The package name <a href="https://pypi.python.org/pypi/urllib2/">is now squatted</a> by us (the good guys). We take these findings seriously, but we have to verify them also.</p>
 
         <h2>How?</h2>
-        
         <ul>
           <li><strong>Strategy #1:</strong> We are typosquatting a bunch of stuff on PyPI (all the Python 2 and Python 3 standard libraries). So no matter if you use the security hardened Pip installer, we have managed to mitigate the bulk of the immediate problem.</li>
           <li><strong>Strategy #2:</strong> Use a Pip installer that does safety lookups and fails loudly if the attempted package name does not validate. This should be implemented in your automated deployments and test builds!</li>
         </ul>
 
-        <h2>How big a problem?</h2>
-        
-        <p>Being total jerks, we have a callback in the <code>setup.py</code> of all packages involved in Strategy #1, meaning that in some time, we will know the true extend of the issue. The callback doesn't involve any stats from your system, just an IP so we can count that a unique system has attempted to install a non-existing package that <em>could</em> have been exploited.</p>
+        <h2>Aftermath</h2>
+        <p>Being total jerks, we have a pingback in the <code>setup.py</code> of all packages involved in Strategy #1, meaning that in some time, we will know the extend of the issue. The callback doesn't involve any stats from your system, just an IP so we can count that a unique system has attempted to install a non-existing package that <em>could</em> have been exploited.</p>
         
         <p>Furthermore, we are doing analysis of the current PyPI resources to find in-the-wild exploits of typosquatting. We hope there are none, but the problem has been around for a long time, and our primer didn't get any reaction from the PyPI staff.</p>
+
+        <h2>Mockup of Strategy #2</h2>
+        <p>Once done, we hope to achieve a better pip installer that:</p>
+        <ul>
+          <li>Verifies that you don't install a package with the name of a stdlib</li>
+          <li>Asks a webservice if you are installing a typo of a popular package</li>
+        </ul>
+        <p>
+          <pre>
+pip install pipsec
+pip install virtualenv-wrapper  # See that it fails
+pip install virtualenvwrapper  # This is correct
+          </pre>
+        </p>
+
+        <h2>Credits</h2>
+        <p>
+        If you like this, please send your praises or complaints to
+        <a href="https://twitter.com/benjaoming/">Benjamin Bach</a> and
+        <a href="https://twitter.com/hanno/">Hanno Böck</a>.
+        </p>
+        <p>
+          You can check out the code for this website on
+          <a href="http://github.com/benjaoming/pytosquatting">http://github.com/benjaoming/pytosquatting</a>.
+        </p>
+        {% comment %}
+        <p>
+          The work in this project is meant to be taken as typical <strong>Careware</strong>.
+          We encourage you to take a moment to care about some stuff we like to consider.
+          Like global inequality and the digital divide. If you like our work,
+          please sponsor: EFF, Python Foundation, Learning Equality, Libraries
+          Without Borders, FAIR Denmark
+        </p>
+        {% endcomment %}
 
       </div>
     </div>
