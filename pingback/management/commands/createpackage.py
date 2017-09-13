@@ -4,6 +4,8 @@ import tempfile
 from django.core.management.base import BaseCommand
 
 
+from pingback import models
+
 
 class Command(BaseCommand):
     """
@@ -31,6 +33,9 @@ class Command(BaseCommand):
         package_name = options['package_name']
         owner = options['owner']
         output_dir = tempfile.mkdtemp()
+        
+        models.Pingback.objects.get_or_create(repository="pypi", package_name=package_name)
+        
         print("Creating package in {}".format(output_dir))
         
         template_dir = os.path.join(
