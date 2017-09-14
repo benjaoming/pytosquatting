@@ -1,3 +1,4 @@
+from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
 
@@ -17,8 +18,18 @@ class Pingback(models.Model):
 
     first_seen = models.DateTimeField(auto_now_add=True)
 
-    count = models.PositiveIntegerField(default=0)
+    count = models.PositiveIntegerField(
+        default=0,
+        verbose_name=_("Hits"),
+        help_text=_("Non-unique hits for this pingback"),
+    )
     
+    unique_count = models.PositiveIntegerField(
+        default=0,
+        verbose_name=_("Unique IPs"),
+        help_text=_("Uniqiue IPs counted"),
+    )
+
     def __str__(self):
         return "{}/{}".format(self.repository, self.package_name)
 
