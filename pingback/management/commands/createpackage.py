@@ -34,10 +34,6 @@ class Command(BaseCommand):
         owner = options['owner']
         output_dir = tempfile.mkdtemp()
         
-        models.Pingback.objects.get_or_create(repository="pypi", package_name=package_name)
-        
-        print("Creating package in {}".format(output_dir))
-        
         template_dir = os.path.join(
             os.path.dirname(__file__), 'data', 'pypi_template'
         )
@@ -65,3 +61,7 @@ class Command(BaseCommand):
             ['twine', 'upload', 'dist/*'],
             cwd=output_dir
         )
+
+        models.Pingback.objects.get_or_create(repository="pypi", package_name=package_name)
+        
+        print("Creating package in {}".format(output_dir))
