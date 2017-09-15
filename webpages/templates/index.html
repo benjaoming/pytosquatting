@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+{% load cache %}
 {% block content %}
+  {% cache 600 everything %}
   <div class="container">
     <div class="row">
       <div class="one-half column" style="margin-top: 10%">
@@ -80,4 +82,6 @@ pip install virtualenvwrapper  # This is correct
       </div>
     </div>
   </div>
+{% endcache %}
 {% endblock %}
+
