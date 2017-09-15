@@ -9,7 +9,7 @@
         <p><strong>Work in progress:</strong> Fixing typosquatting threats in Python Package Index (PyPI).</p>
         <h2>Why?</h2>
         <p>In June 2016, <a href="http://incolumitas.com/2016/06/08/typosquatting-package-managers/">Typosquatting programming language package managers</a> stated that <code>urllib2</code> had ~4,000 downloads in 2 weeks. The package name <a href="https://pypi.python.org/pypi/urllib2/">is now squatted</a> by us (the good guys). We take these findings seriously.</p>
-        <p>On September 14th 2017, a number of in-the-wild malicious packages on PyPI were disclosed by the <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak The National Security Authority</a>.</p>
+        <p>On September 14th 2017, a number of in-the-wild malicious packages on PyPI were disclosed by <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak The National Security Authority</a>.</p>
         <h2>Top 20 stdlib mistakes</h2>
         
         <p>
@@ -45,7 +45,7 @@
         <h2>Aftermath</h2>
         <p>Being total jerks, we have a pingback in the <code>setup.py</code> of all packages involved in Strategy #1, meaning that in some time, we will know the extend of the issue. The callback doesn't involve any stats from your system, just an IP so we can count that a unique system has attempted to install a non-existing package that <em>could</em> have been exploited.</p>
         
-        <p>Furthermore, we are calling for analysis of the current PyPI resources to find in-the-wild exploits of typosquatting as the <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovenian The National Security Authority</a> has done. We hope there are none, but the problem has been around for a long time, and our primer didn't get reactions from the PyPI admins.</p>
+        <p>Furthermore, we are calling for analysis of the current PyPI resources to find in-the-wild exploits of typosquatting as <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak The National Security Authority</a> has done. We hope there are none, but the problem has been around for a long time, and our primer didn't get reactions from the PyPI admins.</p>
 
         <h2>Mockup of Strategy #2</h2>
         <p>Once done, we hope to achieve a better pip installer that:</p>
