@@ -19,17 +19,19 @@
         <table>
         <thead>
         <tr>
+          <th></th>
           <th>Package</th>
-          <th>Average per day</th>
-          <th>Total unique hits</th>
+          <th style="text-align: right">Average per day</th>
+          {% comment %}<th>Total unique hits</th>{% endcomment %}
         </tr>
         </thead>
         <tbody>
         {% for pkg in top %}
         <tr>
+          <td style="text-align: right">{{ forloop.counter }}</td>
           <td>{{ pkg.package_name }}</td>
-          <td>{{ pkg.avg_per_day|floatformat:0 }}</td>
-          <td>{{ pkg.unique_count }}</td>
+          <td style="text-align: right">{{ pkg.avg_per_day|floatformat:0 }}</td>
+          {% comment %}<td>{{ pkg.unique_count }}</td>{% endcomment %}
         </tr>
         {% endfor %}
         </tbody>
