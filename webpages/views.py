@@ -31,7 +31,7 @@ class Index(TemplateView):
             total_sum_per_hour += avg_per_hour
             top_pingbacks_static_refs.append({**pkg})
         
-        sorted(top_pingbacks_static_refs, key=lambda x: x['avg_per_hour'])
+        top_pingbacks_static_refs = sorted(top_pingbacks_static_refs, key=lambda x: -x['avg_per_hour'])
         top_20 = top_pingbacks_static_refs[:20]
         c['top'] = top_20
         c['total_unique_ips'] = models.Pingback.objects.all().aggregate(sum=Sum('unique_count'))['sum']
