@@ -11,7 +11,8 @@ class Index(TemplateView):
     def get_context_data(self, **kwargs):
         c = TemplateView.get_context_data(self, **kwargs)
         duration = ExpressionWrapper(F('last_seen')-F('first_seen'), output_field=fields.DurationField())
-        count_per_duration = ExpressionWrapper(F('unique_count')/F('first_seen'), output_field=fields.FloatField())
+        duration_float = ExpressionWrapper(duration, output_field=fields.FloatField())
+        count_per_duration = ExpressionWrapper(F('unique_count')/duration_float, output_field=fields.FloatField())
         top_pingbacks = models.Pingback.objects.filter(
             unique_count__gt=1,
         ).annotate(
