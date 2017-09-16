@@ -32,7 +32,10 @@ class Index(TemplateView):
             top_pingbacks_static_refs.append({**pkg})
         
         top_pingbacks_static_refs = sorted(top_pingbacks_static_refs, key=lambda x: -x['avg_per_hour'])
-        top_20 = top_pingbacks_static_refs[:20]
-        c['top'] = top_20
+        # Keep on showing the Top 20, because some PyPI admin is deleting the
+        # packages in it.
+        # ...just this top 20 seems to be the source... so we could sneak in
+        # names like "six" and "django" and they'd just delete that too??
+        c['top'] = top_pingbacks_static_refs[:20]
         c['total_unique_ips'] = models.Pingback.objects.all().aggregate(sum=Sum('unique_count'))['sum']
         return c

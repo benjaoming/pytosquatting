@@ -8,34 +8,9 @@
         <h1>Pytosquatting</h1>
         <p><strong>Work in progress:</strong> Fixing typosquatting threats in Python Package Index (PyPI).</p>
         <h2>Why?</h2>
-        <p>In June 2016, <a href="http://incolumitas.com/2016/06/08/typosquatting-package-managers/">Typosquatting programming language package managers</a> stated that <code>urllib2</code> had ~4,000 downloads in 2 weeks. The package name <a href="https://pypi.python.org/pypi/urllib2/">is now squatted</a> by us (the good guys). We take these findings seriously.</p>
-        <p>On September 14th 2017, a number of in-the-wild malicious packages on PyPI were disclosed by <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a>.</p>
-        <h2>Top 20 stdlib mistakes</h2>
-        
-        <p>
-          Blocked stdlib installations since 20170913: <strong>{{ total_unique_ips }}</strong>
-        </p>
-        
-        <table>
-        <thead>
-        <tr>
-          <th></th>
-          <th>Package</th>
-          <th style="text-align: right">Average per day</th>
-          {% comment %}<th>Total unique hits</th>{% endcomment %}
-        </tr>
-        </thead>
-        <tbody>
-        {% for pkg in top %}
-        <tr>
-          <td style="text-align: right">{{ forloop.counter }}</td>
-          <td>{{ pkg.package_name }}</td>
-          <td style="text-align: right">{{ pkg.avg_per_day|floatformat:0 }}</td>
-          {% comment %}<td>{{ pkg.unique_count }}</td>{% endcomment %}
-        </tr>
-        {% endfor %}
-        </tbody>
-        </table>
+        <p>In June 2016, <a href="http://incolumitas.com/2016/06/08/typosquatting-package-managers/">Typosquatting programming language package managers</a> stated that <code>urllib2</code> had ~4,000 downloads in 2 weeks. But in June 2017, we found the same package name vacant and so we (being the good guys) squatted it for several months up until this disclosure. We take these findings seriously.</p>
+        <p>On September 13 2017, we squatted all available names of stdlib packages (128) - scroll down to see statistics from pingbacks.</p>
+        <p>On September 14 2017, a number of in-the-wild malicious packages on PyPI were disclosed by <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a>.</p>
         <h2>How?</h2>
         <ul>
           <li><strong>Strategy #1:</strong> We are typosquatting a bunch of stuff on PyPI (all available Python 2 and Python 3 standard libraries). So no matter if you use the security hardened Pip installer, we have managed to mitigate the bulk of the immediate problem.</li>
@@ -64,7 +39,7 @@ pip install virtualenvwrapper  # This is correct
         <h2>Ack</h2>
         <p>
         Send comments or complaints to
-        <a href="https://twitter.com/benjaoming/">Benjamin Bach</a> and
+        <a href="https://overtag.dk/">Benjamin Bach</a> and
         <a href="https://hboeck.de/">Hanno Böck</a>.
         </p>
         <p>
@@ -81,9 +56,40 @@ pip install virtualenvwrapper  # This is correct
         </p>
         {% endcomment %}
 
+        <h2>Stdlib installations</h2>
+        
+        <p>
+          Blocked stdlib installations since 20170913-20170916: <strong>{{ total_unique_ips }}</strong>
+        </p>
+        
+        <p>
+          On 20170916, PyPI removed our Top 20 of squatted packages, so our statistics won't match up anymore. They didn't remove the other 108 squatted packages.
+        </p>
+        
+        <table>
+        <thead>
+        <tr>
+          <th></th>
+          <th>Package</th>
+          <th style="text-align: right">Average per day</th>
+          {% comment %}<th>Total unique hits</th>{% endcomment %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for pkg in top %}
+        <tr>
+          <td style="text-align: right">{{ forloop.counter }}</td>
+          <td>{{ pkg.package_name }}</td>
+          <td style="text-align: right">{{ pkg.avg_per_day|floatformat:1 }}</td>
+          {% comment %}<td>{{ pkg.unique_count }}</td>{% endcomment %}
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+
+
       </div>
     </div>
   </div>
 {% endcache %}
 {% endblock %}
-
