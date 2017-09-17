@@ -6,7 +6,7 @@
     <div class="row">
       <div class="one-half column" style="margin-top: 10%">
         <h1>Pytosquatting</h1>
-        <p><strong>Work in progress:</strong> Fixing typosquatting threats in Python Package Index (PyPI).</p>
+        <p><strong>Work in progress:</strong> Fixing typosquatting+namesquatting threats in Python Package Index (PyPI).</p>
         <h2>Why?</h2>
         <p>In June 2016, <a href="http://incolumitas.com/2016/06/08/typosquatting-package-managers/">Typosquatting programming language package managers</a> stated that <code>urllib2</code> had ~4,000 downloads in 2 weeks. But in June 2017, we found the same package name vacant and so we (being the good guys) squatted it for several months up until this disclosure. We take these findings seriously.</p>
         <p>20170913: We squatted all available names of stdlib packages (128) - scroll down to see statistics from pingbacks.</p>
@@ -14,7 +14,7 @@
 
         <h2>Mitigation</h2>
         <ul>
-          <li><strong>Strategy #1:</strong> We are typosquatting a bunch of stuff on PyPI (all available Python 2 and Python 3 standard libraries). So no matter if you use the security hardened Pip installer, we have managed to mitigate the bulk of the immediate problem.</li>
+          <li><strong>Strategy #1:</strong> We are namesquatting a bunch of stuff on PyPI (all available Python 2 and Python 3 standard libraries). So no matter if you use the security hardened Pip installer, we have managed to mitigate the bulk of the immediate problem.</li>
           <li><strong>Strategy #2:</strong> Use a Pip installer that does safety lookups and fails loudly if the attempted package name does not validate. This should be implemented in your automated deployments and test builds!</li>
         </ul>
 
