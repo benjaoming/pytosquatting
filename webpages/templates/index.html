@@ -9,9 +9,10 @@
         <p><strong>Work in progress:</strong> Fixing typosquatting threats in Python Package Index (PyPI).</p>
         <h2>Why?</h2>
         <p>In June 2016, <a href="http://incolumitas.com/2016/06/08/typosquatting-package-managers/">Typosquatting programming language package managers</a> stated that <code>urllib2</code> had ~4,000 downloads in 2 weeks. But in June 2017, we found the same package name vacant and so we (being the good guys) squatted it for several months up until this disclosure. We take these findings seriously.</p>
-        <p>On September 13 2017, we squatted all available names of stdlib packages (128) - scroll down to see statistics from pingbacks.</p>
-        <p>On September 14 2017, a number of in-the-wild malicious packages on PyPI were disclosed by <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a>.</p>
-        <h2>How?</h2>
+        <p>20170913: We squatted all available names of stdlib packages (128) - scroll down to see statistics from pingbacks.</p>
+        <p>20170914: A number of in-the-wild malicious packages on PyPI were disclosed by <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a>.</p>
+
+        <h2>Mitigation</h2>
         <ul>
           <li><strong>Strategy #1:</strong> We are typosquatting a bunch of stuff on PyPI (all available Python 2 and Python 3 standard libraries). So no matter if you use the security hardened Pip installer, we have managed to mitigate the bulk of the immediate problem.</li>
           <li><strong>Strategy #2:</strong> Use a Pip installer that does safety lookups and fails loudly if the attempted package name does not validate. This should be implemented in your automated deployments and test builds!</li>
@@ -21,6 +22,8 @@
         <p>Being total jerks, we have a pingback in the <code>setup.py</code> of all packages involved in Strategy #1, meaning that in some time, we will know the extend of the issue. The callback doesn't involve any stats from your system, just an IP so we can count that a unique system has attempted to install a non-existing package that <em>could</em> have been exploited.</p>
         
         <p>Furthermore, we are calling for analysis of the current PyPI resources to find in-the-wild exploits of typosquatting as <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a> has done. We hope there are none, but the problem has been around for a long time, and our primer didn't get reactions from the PyPI admins.</p>
+
+        <p>20170917: PyPI's main developer Donald Stufft creates <a href="https://github.com/pypa/warehouse/pull/2396">PR#2396</a> for database-backed blacklisting of package names. It's unclear how they want to apply the blacklistings, but it would mean a more efficient process for administrators.</p>
 
         <h2>Mockup of Strategy #2</h2>
         <p>Once done, we hope to achieve a better pip installer that:</p>
@@ -35,6 +38,14 @@ pip install virtualenv-wrapper  # See that it fails
 pip install virtualenvwrapper  # This is correct
           </pre>
         </p>
+
+        <h2>Media</h2>
+        
+        <p><a href="https://arstechnica.com/information-technology/2017/09/devs-unknowingly-use-malicious-modules-put-into-official-python-repository/">Ars Technica: Devs unknowingly use “malicious” modules snuck into official Python repository</a></p>
+        
+        <p><a href="https://www.golem.de/news/pypi-boesartige-python-pakete-entdeckt-1709-130098.html">Golem.de: Bösartige Python-Pakete entdeckt (DE)</a></p>
+        
+        <p><a href="https://news.ycombinator.com/item?id=15256121">Hacker News: Malicious software libraries found in PyPI posing as well known libraries</a></p>
 
         <h2>Ack</h2>
         <p>
@@ -56,7 +67,11 @@ pip install virtualenvwrapper  # This is correct
         </p>
         {% endcomment %}
 
-        <h2>Stdlib installations</h2>
+        <hr>
+        
+        <h2>Appendix</h2>
+
+        <h3>Stdlib installations</h3>
         
         <p>
           Blocked stdlib installations since 20170913-20170916: <strong>{{ total_unique_ips }}</strong>
