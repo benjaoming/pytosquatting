@@ -9,6 +9,8 @@
         <p><strong>Work in progress:</strong> Fixing typosquatting+namesquatting threats in Python Package Index (PyPI).</p>
         <h2>Why?</h2>
         <p>In June 2016, <a href="http://incolumitas.com/2016/06/08/typosquatting-package-managers/">Typosquatting programming language package managers</a> stated that <code>urllib2</code> had ~4,000 downloads in 2 weeks. But in June 2017, we found the same package name vacant and so we (being the good guys) squatted it for several months up until this disclosure. We take these findings seriously.</p>
+        <p>20170519: Steve Stagg writes about how he registered stdlib names, sent emails and that <a href="https://hackernoon.com/building-a-botnet-on-pypi-be1ad280b8d6">»I raised an issue on the official pypi github issue tracker in January. This also got no reply.«</a></p>
+        <p>20170628: <a href="https://github.com/pypa/warehouse/issues/2151">PyPI Warehouse issue #2151</a> is opened. Title is "Block package names that conflict with core libraries", but no names were blocked.</p>
         <p>20170913: We squatted all available names of stdlib packages (128) - scroll down to see statistics from pingbacks.</p>
         <p>20170914: A number of in-the-wild <s>malicious</s> packages on PyPI were disclosed by <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a>.</p>
 
@@ -19,17 +21,18 @@
         </ul>
 
         <h2>Aftermath</h2>
-        <p>Being total jerks, we have a pingback in the <code>setup.py</code> of all packages involved in Strategy #1, meaning that in some time, we will know the extend of the issue. The callback doesn't involve any stats from your system, just an IP so we can count that a unique system has attempted to install a non-existing package that <em>could</em> have been exploited.</p>
+        <p>We had a pingback in the <code>setup.py</code> of packages involved in Strategy #1, meaning that during a limited duration, we gathered statistics on the extend of the issue. The callback didn't involve any stats from user systems, just an IP so we can count that a unique system has attempted to install a non-existing package that <em>could</em> have been exploited.</p>
         
-        <p>Furthermore, we are calling for analysis of the current PyPI resources to find in-the-wild exploits of typosquatting as <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a> has done. We hope there are none, but the problem has been around for a long time, and our primer didn't get reactions from the PyPI admins.</p>
+        <p>We are calling for analysis of the current PyPI resources to find in-the-wild exploits of typosquatting as <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a> has done. We hope there are none, but the problem has been around for a long time, and our primer didn't get reactions from the PyPI admins.</p>
 
         <p>20170917: PyPI's main developer Donald Stufft creates <a href="https://github.com/pypa/warehouse/pull/2396">PR#2396</a> for database-backed blacklisting of package names. It's unclear how they want to apply the blacklistings, but it would mean a more efficient process for administrators.</p>
 
         <h2>Mockup of Strategy #2</h2>
+        
         <p>Once done, we hope to achieve a better pip installer that:</p>
         <ul>
           <li>Verifies that you don't install a package with the name of a stdlib</li>
-          <li>Asks a webservice if you are installing a typo of a popular package</li>
+          <li>Asks a webservice or local database if you are installing a typo of a popular package</li>
         </ul>
         <p>
           <pre>
@@ -38,6 +41,8 @@ pip install virtualenv-wrapper  # See that it fails
 pip install virtualenvwrapper  # This is correct
           </pre>
         </p>
+
+        <p>It seems to be hinted by the closure of <a href="https://github.com/pypa/pip/issues/4527">pip#4527</a> that attempts to add security to the client side isn't popular. Arguments are weak, though, so there's no real reason not to do something like the above.</p>
 
         <h2>Media</h2>
         
