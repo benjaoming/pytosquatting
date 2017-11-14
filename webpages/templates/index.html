@@ -6,15 +6,20 @@
     <div class="row">
       <div class="one-half column" style="margin-top: 10%">
         <h1>Pytosquatting</h1>
-        <p><strong>Work in progress:</strong> Fixing typosquatting+namesquatting threats in Python Package Index (PyPI).</p>
-        <h2>Why?</h2>
+        <p><del>Work in progress:</del> Fixing typosquatting+namesquatting threats in Python Package Index (PyPI).</p>
+        <h2>Epilogue</h2>
+        <p>We have closed the Pytosquatting initiative for now. This is because Python Security Response Team (PSRT) has finally taken action (see below).</p>
+        <h2>Timeline</h2>
         <p>In June 2016, <a href="http://incolumitas.com/2016/06/08/typosquatting-package-managers/">Typosquatting programming language package managers</a> stated that <code>urllib2</code> had ~4,000 downloads in 2 weeks. But in June 2017, we found the same package name vacant and so we (being the good guys) squatted it for several months up until this disclosure. We take these findings seriously.</p>
         <p>20170519: Steve Stagg writes about how he registered stdlib names, sent emails and that <a href="https://hackernoon.com/building-a-botnet-on-pypi-be1ad280b8d6">»I raised an issue on the official pypi github issue tracker in January. This also got no reply.«</a></p>
         <p>20170628: <a href="https://github.com/pypa/warehouse/issues/2151">PyPI Warehouse issue #2151</a> is opened. Title is "Block package names that conflict with core libraries", but no names were blocked.</p>
         <p>20170913: We squatted all available names of stdlib packages (128) - scroll down to see statistics from pingbacks.</p>
-        <p>20170914: A number of in-the-wild <s>malicious</s> packages on PyPI were disclosed by <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a>.</p>
+        <p>20170914: A number of in-the-wild <del>malicious</del> packages on PyPI were disclosed by <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a>.</p>
+        <p>20170917: PyPI's main developer Donald Stufft creates <a href="https://github.com/pypa/warehouse/pull/2396">PR#2396</a> for database-backed blacklisting of package names. It's unclear how they want to apply the blacklistings, but it would mean a more efficient process for administrators. Most of the stdlib names that we squatted are black listed.</p>
+        <p>20170922: Python Security Response Team (PSRT) takes action <a href="https://mail.python.org/pipermail/security-announce/2017-September/000000.html">by announcing a detailed plan</a> to mitigate future attacks. The plan is included in an over-all boost of PyPy, receiving a $170k grant from Mozilla Foundation.</p>
 
         <h2>Mitigation</h2>
+        <p>Here's a couple of proprosals that we originally posted -- which have since then been expanded in a nice way in <a href="https://mail.python.org/pipermail/security-announce/2017-September/000000.html">PSRT's security announcement</a>.</p>
         <ul>
           <li><strong>Strategy #1:</strong> We are namesquatting a bunch of stuff on PyPI (all available Python 2 and Python 3 standard libraries). So no matter if you use the security hardened Pip installer, we have managed to mitigate the bulk of the immediate problem.</li>
           <li><strong>Strategy #2:</strong> Use a Pip installer that does safety lookups and fails loudly if the attempted package name does not validate. This should be implemented in your automated deployments and test builds!</li>
@@ -25,8 +30,6 @@
         
         <p>We are calling for analysis of the current PyPI resources to find in-the-wild exploits of typosquatting as <a href="http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/">Slovak National Security Authority</a> has done. We hope there are none, but the problem has been around for a long time, and our primer didn't get reactions from the PyPI admins.</p>
 
-        <p>20170917: PyPI's main developer Donald Stufft creates <a href="https://github.com/pypa/warehouse/pull/2396">PR#2396</a> for database-backed blacklisting of package names. It's unclear how they want to apply the blacklistings, but it would mean a more efficient process for administrators.</p>
-
         <h2>Mockup of Strategy #2</h2>
         
         <p>Once done, we hope to achieve a better pip installer that:</p>
@@ -34,9 +37,10 @@
           <li>Verifies that you don't install a package with the name of a stdlib</li>
           <li>Asks a webservice or local database if you are installing a typo of a popular package</li>
         </ul>
+        <p>It could look like this...</p>
         <p>
           <pre>
-pip install pipsec
+pip install pipsec  # Install security-hardening plugin for pip
 pip install virtualenv-wrapper  # See that it fails
 pip install virtualenvwrapper  # This is correct
           </pre>
@@ -62,15 +66,6 @@ pip install virtualenvwrapper  # This is correct
           Check out the code for this website on
           <a href="https://github.com/benjaoming/pytosquatting">https://github.com/benjaoming/pytosquatting</a>.
         </p>
-        {% comment %}
-        <p>
-          The work in this project is meant to be taken as typical <strong>Careware</strong>.
-          We encourage you to take a moment to care about some stuff we like to consider.
-          Like global inequality and the digital divide. If you like our work,
-          please sponsor: EFF, Python Foundation, Learning Equality, Libraries
-          Without Borders, FAIR Denmark
-        </p>
-        {% endcomment %}
 
         <hr>
         
