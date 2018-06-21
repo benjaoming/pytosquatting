@@ -1,6 +1,6 @@
-=====================
-www.pytosquatting.org
-=====================
+========================
+pytosquatting.overtag.dk
+========================
 
 This is a Django project.
 
