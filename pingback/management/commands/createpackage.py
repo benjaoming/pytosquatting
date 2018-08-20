@@ -40,11 +40,19 @@ class Command(BaseCommand):
             cwd=output_dir
         )
 
-        subprocess.call(
+        rcode = subprocess.call(
             ['twine', 'upload', 'dist/*'],
             cwd=output_dir
         )
 
-        models.Pingback.objects.get_or_create(repository="pypi", package_name=package_name)
-        
+        pingback = models.Pingback.objects.get_or_create(repository="pypi", package_name=package_name)
+
+        if rcode != 0 and not pingback.blocked:
+            pingback.blocked = True
+            pingback.blocked_first_seen = datetime.now()
+            pingback.save()
+        elif rcode == 0 and pingback.blocked:
+            pingback.blocked = False
+            pingback.save()
+
         print("Creating package in {}".format(output_dir))
