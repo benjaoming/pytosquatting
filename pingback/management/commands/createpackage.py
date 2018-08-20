@@ -52,10 +52,10 @@ class Command(BaseCommand):
             cwd=output_dir
         )
 
-        subprocess.call(
-            ['twine', 'register', 'dist/*'],
-            cwd=output_dir
-        )
+#        subprocess.call(
+#            ['twine', 'register', 'dist/*'],
+#            cwd=output_dir
+#        )
 
         subprocess.call(
             ['twine', 'upload', 'dist/*'],
