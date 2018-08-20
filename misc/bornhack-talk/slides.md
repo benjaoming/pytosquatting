@@ -81,6 +81,8 @@ http://www.nbu.gov.sk/skcsirt-sa-20170909-pypi/
 
 PyPI now blocks all standard library names.
 
+(Tested w/ Python 3.7)
+
 ---
 
 PyPI did not block all the previously abused typo names.
@@ -89,7 +91,7 @@ We were able to re-register some of them yesterday
 
 ---
 
-NPM
+npm
 ===
 
 680,893 pkgs (August 19)
@@ -154,19 +156,21 @@ Malware author's statement/trolling:
 >
 > It's not Canonical's fault or snappy packages (in flatpak it is possible). Closed software will always do something that you can not influence.
 
+---
+
 Snap malware 4/3
 ================
 
 ...and then Snap maintainers edited the package and removed the Malware and published a new version!
 
-![happy ending](hqdefault.png)
+![happy ending](hqdefault.jpg)
 
 ---
 
 Honorable mentions
 ==================
 
- * NPM 5.7.0 which broke irreversibly broken production servers
+ * npm 5.7.0 which broke irreversibly broken production servers
    https://github.com/npm/npm/issues/19883
  * Yarn doesn't have a security model?
    https://github.com/yarnpkg/yarn/issues/1169
@@ -177,10 +181,28 @@ Honorable mentions
 Browser extensions
 ==================
 
- * >20 Million Users Installed Malicious Ad Blockers From Chrome Store
-   April 2018
+\>20 Million Users Installed Malicious Ad Blockers From Chrome Store
+(April 2018)
 
-https://thehackernews.com/2018/04/adblocker-chrome-extention.html
+https://adguard.com/en/blog/over-20-000-000-of-chrome-users-are-victims-of-fake-ad-blockers/
+
+---
+
+Big Star Labs
+
+> Browser extensions + mobile apps invisibly collecting users' browsing history
+
+* Block Site. Privacy policy.
+  Android app with 100,000+ installs.
+  Chrome extension with 1,440,000+ users.
+  Firefox extension with 119,000+ users.
+* Poper Blocker. Privacy policy.
+  Chrome extension with 2,280,000+ users.
+  Firefox extension with 50,000+ users.
+* CrxMouse. Privacy policy.
+  Chrome extension with 410,000+ users.
+
+https://adguard.com/en/blog/big-star-labs-spyware/
 
 ---
 
