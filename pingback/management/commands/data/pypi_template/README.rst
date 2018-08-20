@@ -3,4 +3,4 @@ Beware of typosquatting in package managers!
 
 {{ PACKAGE_NAME }}
 
-`https://www.pytosquatting.org <https://www.pytosquatting.org>`__
+`https://pytosquatting.overtag.dk <https://pytosquatting.overtag.dk>`__

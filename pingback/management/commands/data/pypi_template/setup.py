@@ -21,11 +21,11 @@ if 'install' in sys.argv:
         # Python 2
         import urllib2 as urllib_request
     html = urllib_request.urlopen(
-        "https://www.pytosquatting.org/pingback/pypi/{}/".format(package_name)
+        "https://pytosquatting.overtag.dk/pingback/pypi/{}/".format(package_name)
     )
     raise Exception(
         "This is a bogus package that should not be installed\n\n"
-        "Please read https://www.pytosquatting.org"
+        "Please read https://pytosquatting.overtag.dk"
     )
 
 # Use timestamp as version, we never need to keep track of anything then :)
