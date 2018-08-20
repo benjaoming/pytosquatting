@@ -36,7 +36,7 @@ setup(
     version=VERSION,
     description="Checking out the typosquatting state of PyPI",
     long_description=readme,
-    author="{{ OWNER }}",
+    author="pytosquatting",
     author_email='info@pytosquatting.org',
     url='https://www.pytosquatting.org',
     packages=[],
