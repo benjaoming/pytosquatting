@@ -18,6 +18,9 @@ class Pingback(models.Model):
 
     first_seen = models.DateTimeField(auto_now_add=True)
 
+    first_seen_blocked = models.DateTimeField(null=True, blank=True)
+    blocked = models.BooleanField(default=False)
+
     count = models.PositiveIntegerField(
         default=0,
         verbose_name=_("Hits"),
