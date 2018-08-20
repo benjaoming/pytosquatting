@@ -45,7 +45,7 @@ class Command(BaseCommand):
             cwd=output_dir
         )
 
-        pingback = models.Pingback.objects.get_or_create(repository="pypi", package_name=package_name)
+        pingback, __ = models.Pingback.objects.get_or_create(repository="pypi", package_name=package_name)
 
         if rcode != 0 and not pingback.blocked:
             pingback.blocked = True
