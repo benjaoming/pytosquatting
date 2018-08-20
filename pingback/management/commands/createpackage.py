@@ -21,7 +21,6 @@ class Command(BaseCommand):
         #                     help="Some option")
 
     def handle(self, *args, **options):
-        """gets data from WordPress site"""
         package_name = options['package_name']
         output_dir = tempfile.mkdtemp()
         
