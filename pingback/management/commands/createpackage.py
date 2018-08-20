@@ -51,7 +51,7 @@ class Command(BaseCommand):
 
         if rcode != 0 and not pingback.blocked:
             pingback.blocked = True
-            pingback.blocked_first_seen = datetime.now()
+            pingback.first_seen_blocked = datetime.now()
             pingback.save()
         elif rcode == 0 and pingback.blocked:
             pingback.blocked = False
