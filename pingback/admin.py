@@ -6,7 +6,7 @@ from . import models
 
 @admin.register(models.Pingback)
 class PingbackAdmin(admin.ModelAdmin):
-    list_display = ('package_name', 'unique_count', 'count', 'last_seen', 'first_seen')
+    list_display = ('package_name', 'unique_count', 'count', 'last_seen', 'first_seen', 'blocked', 'first_seen_blocked')
     list_filter = ('repository', 'last_seen')
 
 
