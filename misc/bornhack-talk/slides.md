@@ -170,7 +170,7 @@ Snap malware 4/3
 Honorable mentions
 ==================
 
- * npm 5.7.0 which broke irreversibly broken production servers
+ * npm 5.7.0 which irreversibly broke production servers
    https://github.com/npm/npm/issues/19883
  * Yarn doesn't have a security model?
    https://github.com/yarnpkg/yarn/issues/1169
@@ -279,7 +279,7 @@ It's unlikely that a project like PyPi will switch to a moderated model.
 Partial work-arounds
 ====================
 
-Exists: Reactionary / hindsight
+Exists: Acting in hindsight
 
 Possible future: Opt-in security hardening?
 
