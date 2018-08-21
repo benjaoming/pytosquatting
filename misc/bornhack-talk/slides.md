@@ -4,10 +4,10 @@ Package mis-management
 Hanno Böck & Benjamin Bach
 
 Böck://
-www.hboeck.de + Twitter:@hanno
+hboeck.de + Twitter: @hanno
 
 Bach://
-www.overtag.dk + Twitter:@benjaoming
+overtag.dk + Twitter: @benjaoming
 
 ---
 
@@ -26,6 +26,8 @@ Outline
 * Incidents
 * Theoretical attacks
 * Future
+
+⚽
 
 ---
 
@@ -125,6 +127,8 @@ Likely compromised developer account due to password reuse.
 
 https://eslint.org/blog/2018/07/postmortem-for-malicious-package-publishes
 
+⚽
+
 ---
 
 Snap malware 1/3
@@ -164,6 +168,18 @@ Snap malware 4/3
 ...and then Snap maintainers edited the package and removed the Malware and published a new version!
 
 ![happy ending](hqdefault.jpg)
+
+---
+
+![snap discussion 1](snap_aws_github_thread1.png)
+
+---
+
+![snap discussion 2](snap_aws_github_thread2.png)
+
+---
+
+![snap discussion 3](snap_aws_github_thread3.png)
 
 ---
 
@@ -215,6 +231,15 @@ The new version of the extension started injecting Ads into web pages.
 
 ---
 
+StackOverflow support
+=====================
+
+![stack overflow help](curl_bash_install.png)
+
+⚽
+
+---
+
 Hypothetical attacks
 ====================
 
@@ -238,12 +263,6 @@ Package maintainers are insensitive to new dependencies
 
 *) https://hackernoon.com/im-harvesting-credit-card-numbers-and-passwords-from-your-site-here-s-how-9a8cb347c5b5
 
----
-
-StackOverflow support
-=====================
-
-![stack overflow help](curl_bash_install.png)
 
 ---
 
@@ -276,6 +295,8 @@ The open model has obvious risks, but it also brings a lot of agility to the dev
 
 It's unlikely that a project like PyPi will switch to a moderated model.
 
+---
+
 Partial work-arounds
 ====================
 
@@ -283,7 +304,16 @@ Exists: Acting in hindsight
 
 Possible future: Opt-in security hardening?
 
-(Like Yarn for NPM)
+---
+
+Is there a middleground?
+========================
+
+Popular packages with known maintainers get accepted automatically.
+
+Installation needs confirmation for less popular packages.
+
+⚽
 
 ---
 
@@ -296,7 +326,7 @@ Snap/Flatpak make Linux distributions move away from a moderated model.
 
 PPAs and other inofficial sources are popular.
 
-curl https://install.fancy.io | sudo bash
+`curl https://install.fancy.io | sudo bash`
 
 ---
 
@@ -330,6 +360,8 @@ Canonical pushing snap:
 
 ![pony say tweet](snap_pony_say.png)
 
+⚽
+
 ---
 
 Is the Debian model even good enough?
@@ -360,8 +392,10 @@ Good things to do
 
 * Block previously abused namespaces.
 * Use HTTPS, particularly for all downloads outside a verified distribution system.
-* Don't delete / unpublish old versions with security problems (no matter if binary or source).
+* Don't delete / unpublish old versions with security problems, no matter if binary or source. (Bad example: Signal deletes Linux/deb releases.)
 * Store release hashes in an auditable append-only structure. (You likely already have one: Your Git repo.)
+
+⚽
 
 ---
 
