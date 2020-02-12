@@ -39,7 +39,7 @@ class Pingback(models.Model):
 
 class PingbackIP(models.Model):
     
-    pingback = models.ForeignKey(Pingback)
+    pingback = models.ForeignKey(Pingback, on_delete=models.CASCADE)
     ip = models.GenericIPAddressField()
     first_seen = models.DateTimeField(auto_now_add=True)
     last_seen = models.DateTimeField(auto_now=True)

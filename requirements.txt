@@ -1,2 +1,2 @@
 psycopg2-binary
-django<2
+django<3
