@@ -1,2 +1,2 @@
 psycopg2-binary
-django<3
+django>=3.2,<3.3
