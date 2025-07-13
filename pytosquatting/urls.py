@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import path, include
 from django.contrib import admin
 
 from webpages.urls import urlpatterns as webpages_urls
@@ -21,7 +21,7 @@ from pingback.urls import urlpatterns as pingback_urls
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^pingback', include(pingback_urls)),
-    url(r'', include(webpages_urls)),
+    path('admin/', admin.site.urls),
+    path('pingback', include(pingback_urls)),
+    path('', include(webpages_urls)),
 ]
